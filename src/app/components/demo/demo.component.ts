@@ -1,21 +1,17 @@
 import { Component } from '@angular/core';
 import { DemoService } from 'src/app/services/demo.service';
+import { Factory } from '../../factory/factory';
 
 @Component({
   selector: 'app-demo',
-  template: `
-    <button (click)="setDataInService()">Set Data</button>
-    <button (click)="getDataFromService()">Get Data</button>
-  `,
+  template: ` <button (click)="print()">Admin</button> `,
 })
 export class DemoComponent {
-  constructor(private demoService: DemoService) {}
-
-  setDataInService(): void {
-    this.demoService.setData({ message: 'Hello World!' });
+  ngOinit() {
+    print();
   }
 
-  getDataFromService(): void {
-    console.log(this.demoService.getData());
+  print() {
+    console.log(Factory.createUser('admin').displayMessage());
   }
 }
